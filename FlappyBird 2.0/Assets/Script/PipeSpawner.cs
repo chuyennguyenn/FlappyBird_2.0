@@ -8,14 +8,18 @@ public class PipeSpawner : MonoBehaviour
     [SerializeField] private GameObject SpeicalPipePrefab; 
     [SerializeField] private float spawnInterval = 1.75f; 
 
-    private float timer = 0f; 
+    private float timer = 0f;
+
+    GameManager gameManager;
 
     private void Start()
     {
-        SpawnPipe();
+        gameManager = FindFirstObjectByType<GameManager>();
     }
     private void Update()
     {
+        if (!gameManager.started) return; // Only spawn pipes if the game has started
+
         timer += Time.deltaTime;
 
         if (timer > spawnInterval)
@@ -40,7 +44,7 @@ public class PipeSpawner : MonoBehaviour
         }
         else
         {
-            float easyChance = Mathf.Lerp(0.65f, 0f, Time.timeSinceLevelLoad/120f);             // easy: 65% -> 0%
+            float easyChance = Mathf.Lerp(0.65f, 0f, Time.timeSinceLevelLoad / 120f);             // easy: 65% -> 0%
             float midChance = Mathf.Lerp(0.25f, 0.5f, Time.timeSinceLevelLoad / 120f);          // mid: 25% -> 50%
             float hardChance = 1f - easyChance - midChance;                                     // fill the rest (10% → 50%)
 
