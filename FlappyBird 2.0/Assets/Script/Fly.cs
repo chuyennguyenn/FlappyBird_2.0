@@ -33,7 +33,7 @@ public class Fly : MonoBehaviour
             float t = Time.timeSinceLevelLoad;
 
             rb.gravityScale = Mathf.Min(1.2f, Mathf.Lerp(0.8f, 1.2f, t / 120f)); // gravity stronger overtime
-            flySpeed = Mathf.Min(1.5f, Mathf.Lerp(1.0f, 1.5f, t / 120f)); // fly speed stronger overtime
+            flySpeed = Mathf.Min(1.5f, Mathf.Lerp(1.0f, 1.5f, t / 120f)); // fly "height" stronger overtime
         }
 
     }
@@ -47,6 +47,9 @@ public class Fly : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        gameManager.GameOver();
+        if (collision.gameObject.name != "SkyBox") 
+        {
+            gameManager.GameOver();
+        }
     }
 }

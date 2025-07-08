@@ -18,7 +18,7 @@ public class PipeSpawner : MonoBehaviour
     }
     private void Update()
     {
-        if (!gameManager.started) return; // Only spawn pipes if the game has started
+        if (!gameManager.started) return; // spawn pipes if the game has started
 
         timer += Time.deltaTime;
 
@@ -31,7 +31,7 @@ public class PipeSpawner : MonoBehaviour
     private void SpawnPipe()
     {
         float randomHeight = 0f;
-        int randomDifficulty = Random.Range(0,3);
+        int randomDifficulty = Random.Range(0,4);                                                   // 1 in 4 chance to spawn a special pipe
         //int randomDifficulty = 0;
 
         GameObject pipePrefab = null;
@@ -44,9 +44,9 @@ public class PipeSpawner : MonoBehaviour
         }
         else
         {
-            float easyChance = Mathf.Lerp(0.65f, 0f, Time.timeSinceLevelLoad / 120f);             // easy: 65% -> 0%
-            float midChance = Mathf.Lerp(0.25f, 0.5f, Time.timeSinceLevelLoad / 120f);          // mid: 25% -> 50%
-            float hardChance = 1f - easyChance - midChance;                                     // fill the rest (10% → 50%)
+            float easyChance = Mathf.Lerp(0.65f, 0f, Time.timeSinceLevelLoad / 120f);               // easy: 65% -> 0%
+            float midChance = Mathf.Lerp(0.25f, 0.5f, Time.timeSinceLevelLoad / 120f);              // mid: 25% -> 50%
+            float hardChance = 1f - easyChance - midChance;                                         // fill the rest (10% → 50%)
 
             float randomPipe = Random.Range(0f, 1f);
 

@@ -3,17 +3,17 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    public int score = 0; // Player's score
+    public int score = 0;
 
-    public int highScore = 0; // Player's high score
+    public int highScore = 0;
 
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI highScoreText;
 
     private void Start()
     {
-        highScore = PlayerPrefs.GetInt("HighScore", 0); // Load high score from PlayerPrefs
-        highScoreText.text = highScore.ToString(); // Initialize high score display
+        highScore = PlayerPrefs.GetInt("HighScore", 0); // load high score from PlayerPrefs
+        highScoreText.text = highScore.ToString(); 
     }
 
     private void Update()
@@ -25,11 +25,11 @@ public class ScoreManager : MonoBehaviour
     {
         if (score > PlayerPrefs.GetInt("HighScore", 0))
         {
-            PlayerPrefs.SetInt("HighScore", score); // Save new high score to PlayerPrefs
+            PlayerPrefs.SetInt("HighScore", score); // save new high score
         }
-        highScore = PlayerPrefs.GetInt("HighScore", 0); // Retrieve the high score from PlayerPrefs
+        highScore = PlayerPrefs.GetInt("HighScore", 0); // get the high score from PlayerPrefs
 
-        scoreText.text = score.ToString(); // Update the score display
-        highScoreText.text = highScore.ToString(); // Update the high score display
+        scoreText.text = score.ToString(); // update the score display
+        highScoreText.text = highScore.ToString(); // update the high score display
     }
 }

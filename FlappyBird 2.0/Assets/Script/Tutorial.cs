@@ -5,17 +5,17 @@ public class Tutorial : MonoBehaviour
 {
     public TextMeshProUGUI DisplayText;
 
-    public int timer = 3;
+    public int timerMax = 3;
 
     private void Update()
     {
-        timer = 3 - (int)Time.timeSinceLevelLoad;
+        int timer = timerMax - (int)Time.timeSinceLevelLoad;
         DisplayText.text = timer.ToString(); 
-        Debug.Log("Timer: " + Time.timeSinceLevelLoad); // Log the timer value for debugging
+        //Debug.Log("Timer: " + Time.timeSinceLevelLoad);
 
         if (timer <= 0)
         {
-            Debug.Log("Tutorial finished, starting game..."); // Log when the tutorial finishes
+            //Debug.Log("Tutorial finished, starting game..."); 
             GameManager.instance.StartGame(); 
         }
     }

@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public int score = 0; // Player's score
+    public int score = 0; 
 
     public static GameManager instance;
 
@@ -24,35 +24,35 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 1f;
 
-        Tutorial.SetActive(true); // Activate the tutorial UI
-        gameOverScene.SetActive(false); // Deactivate the Game Over scene
-        Score.SetActive(false); // Deactivate the score UI
+        Tutorial.SetActive(true); 
+        gameOverScene.SetActive(false); 
+        Score.SetActive(false); 
     }
 
     public void StartGame()
     {
-        Tutorial.SetActive(false); // Deactivate the tutorial UI
+        Tutorial.SetActive(false); 
         Score.SetActive(true);
         started = true;
     }
 
     public void GameOver()
     {
-        gameOverScene.SetActive(true); // Activate the Game Over scene
-        Score.SetActive(false); // Deactivate the score UI
+        gameOverScene.SetActive(true); 
+        Score.SetActive(false); 
 
-        Time.timeScale = 0f; // Pause the game
+        Time.timeScale = 0f; // pause the game
     }
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Restart the current scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // restart
         
     }
 
     public void MainMenu()
     {
-        SceneManager.LoadScene("MainMenu"); // Load the main menu scene
+        SceneManager.LoadScene("MainMenu"); // load the main menu
     }
 
 }

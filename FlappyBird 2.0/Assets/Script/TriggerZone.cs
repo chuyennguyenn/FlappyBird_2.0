@@ -10,6 +10,6 @@ public class TriggerZone : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        scoreManager.score += 1; // Increment the score when the player enters the trigger zone
+        scoreManager.score += 1;
     }
 }
