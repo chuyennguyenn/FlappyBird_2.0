@@ -6,7 +6,7 @@ A replication of one of the most well-known hyper-casual games: Flappy Bird.
 
 1. There are 3 single-gap pipes: Easy, Mid, and Hard. The difference between them is the width of the gap between the upper and lower pipe.
   
-Additionally, there is a Special pipe type with 2 gaps instead of 1.
+   Additionally, there is a Special pipe type with 2 gaps instead of 1.
    
 2. Difficulty: The game becomes more difficult over time, reaching maximum difficulty after 2 minutes:
 
