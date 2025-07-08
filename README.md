@@ -26,4 +26,13 @@ A replication of one of the most well-known hyper-casual games: Flappy Bird.
 
    Both Fly Height (how high the bird jumps on tap) and gravity (how fast the bird falls) increase over time, reaching their maximum values after 2 minutes.
 
+   # How to run
+
+   Download the zip file, extract to desired folder and run the .exe file
+
+   # Todo
+
+   - Add collectible (shield - give immunity, star - give extra point...)
+   - Add ability(really???) to the bird + more playable character
+
    
