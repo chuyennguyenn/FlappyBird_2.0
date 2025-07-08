@@ -2,7 +2,7 @@
 
 A replication of one of the most well-known hyper-casual games: Flappy Bird.
 
-# What news
+# What's news
 
 1. There are 3 single-gap pipes: Easy, Mid, and Hard. The difference between them is the width of the gap between the upper and lower pipe.
   
