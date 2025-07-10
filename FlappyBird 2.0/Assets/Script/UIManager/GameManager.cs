@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         gameOverScene.SetActive(true); 
-        Score.SetActive(false); 
 
         Time.timeScale = 0f; // pause the game
     }

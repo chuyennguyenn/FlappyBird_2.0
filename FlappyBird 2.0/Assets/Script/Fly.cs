@@ -11,16 +11,26 @@ public class Fly : MonoBehaviour
     GameManager gameManager;
 
     private Rigidbody2D rb;
+    private Animator animator;
 
     public bool invincible;
     public bool shieldActive; 
+
     private Coroutine shieldCoroutine;
+    private PlayerInput playerInput;
+    private InputAction skill;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         gameManager = FindFirstObjectByType<GameManager>();
+        animator = GetComponent<Animator>();
+        playerInput = GetComponent<PlayerInput>();
+
         invincible = false;
+
+        skill = playerInput.actions["Skill"];
+
     }
 
     private void Update()
@@ -31,16 +41,19 @@ public class Fly : MonoBehaviour
             return;
         }
 
+        DifficultyIncrease();
+
         if (Mouse.current.leftButton.isPressed)
         {
             rb.linearVelocity = Vector2.up * flySpeed; // move up
         }
 
-        float t = Time.timeSinceLevelLoad;
-
-        rb.gravityScale = Mathf.Min(1.2f, Mathf.Lerp(0.8f, 1.2f, t / 120f)); // gravity stronger overtime
-        flySpeed = Mathf.Min(1.5f, Mathf.Lerp(1.0f, 1.5f, t / 120f)); // fly "height" stronger overtime
-        
+        if (skill.WasPressedThisFrame())
+        {
+            Time.timeScale = 0.5f;
+            StartCoroutine(BackToNormal());
+        }
+       
     }
 
     private void FixedUpdate()
@@ -68,6 +81,7 @@ public class Fly : MonoBehaviour
                     shieldCoroutine = null;
                 }
                 Debug.Log("Shield broken by collision!");
+                animator.SetTrigger("Invincible");
                 StartCoroutine(BeingInvincible());
             }
         }
@@ -78,7 +92,17 @@ public class Fly : MonoBehaviour
         if (shieldCoroutine != null)
             StopCoroutine(shieldCoroutine);
 
+        animator.SetBool("Shield", true);
         shieldCoroutine = StartCoroutine(ShieldRoutine());
+    }
+
+    public void DifficultyIncrease()
+    {
+        float t = Time.timeSinceLevelLoad;
+
+        rb.gravityScale = Mathf.Min(1.2f, Mathf.Lerp(0.8f, 1.2f, t / 120f)); // gravity stronger overtime
+        flySpeed = Mathf.Min(1.5f, Mathf.Lerp(1.0f, 1.5f, t / 120f)); // fly "height" stronger overtime
+
     }
 
     private IEnumerator ShieldRoutine()
@@ -86,7 +110,7 @@ public class Fly : MonoBehaviour
         invincible = true;
         shieldActive = true;
         float timer = 0f;
-        float duration = 5f;
+        float duration = 8f;
 
         while (timer < duration && shieldActive)
         {
@@ -94,6 +118,7 @@ public class Fly : MonoBehaviour
             yield return null;
         }
 
+        animator.SetBool("Shield", false);
         invincible = false;
         shieldActive = false;
         shieldCoroutine = null;
@@ -101,8 +126,15 @@ public class Fly : MonoBehaviour
 
     private IEnumerator BeingInvincible()
     {
-        yield return new WaitForSeconds(1f); // invincibility lasts for 5 seconds
+        yield return new WaitForSeconds(1f);
         Debug.Log("Invincibility ended!");
+        animator.SetBool("Shield", false);
         invincible = false;
+    }
+
+    private IEnumerator BackToNormal()
+    {
+        yield return new WaitForSeconds(5f);
+        Time.timeScale = 1f;
     }
 }

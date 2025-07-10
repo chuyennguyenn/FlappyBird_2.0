@@ -8,7 +8,7 @@ public class CollectibleSpawn : MonoBehaviour
     private void Start()
     {
         //Debug.Log("CollectibleSpawn started");
-        int randomSpawn = Random.Range(0, 1);
+        int randomSpawn = Random.Range(0, 6);
 
         if (randomSpawn == 0)
         {
@@ -21,7 +21,7 @@ public class CollectibleSpawn : MonoBehaviour
     {
         float chance = Random.Range(0f, 1f);
 
-        if (chance < 0.5f)
+        if (chance < 0.7f)
         {
             //Debug.Log("Spawning Star");
             Instantiate(star, transform.position, Quaternion.identity, transform);
