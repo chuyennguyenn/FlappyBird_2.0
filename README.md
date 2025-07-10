@@ -32,7 +32,7 @@ A replication of one of the most well-known hyper-casual games: Flappy Bird.
 
    # Todo
 
-   - Add collectible (shield - give immunity, star - give extra point...)
+   - ~~Add collectible (shield - give immunity, star - give extra point...)~~
    - Add ability(really???) to the bird + more playable character
 
    
