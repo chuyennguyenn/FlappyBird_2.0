@@ -11,25 +11,21 @@ public class Fly : MonoBehaviour
     GameManager gameManager;
 
     private Rigidbody2D rb;
-    private Animator animator;
+    //private Animator animator;
+    private SpriteRenderer spriteRenderer;
 
     public bool invincible;
     public bool shieldActive; 
 
     private Coroutine shieldCoroutine;
-    private PlayerInput playerInput;
-    private InputAction skill;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         gameManager = FindFirstObjectByType<GameManager>();
-        animator = GetComponent<Animator>();
-        playerInput = GetComponent<PlayerInput>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         invincible = false;
-
-        skill = playerInput.actions["Skill"];
 
     }
 
@@ -47,13 +43,6 @@ public class Fly : MonoBehaviour
         {
             rb.linearVelocity = Vector2.up * flySpeed; // move up
         }
-
-        if (skill.WasPressedThisFrame())
-        {
-            Time.timeScale = 0.5f;
-            StartCoroutine(BackToNormal());
-        }
-       
     }
 
     private void FixedUpdate()
@@ -63,7 +52,7 @@ public class Fly : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, rb.linearVelocity.y * rotationSpeed);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.name != "SkyBox")
         {
@@ -81,7 +70,8 @@ public class Fly : MonoBehaviour
                     shieldCoroutine = null;
                 }
                 Debug.Log("Shield broken by collision!");
-                animator.SetTrigger("Invincible");
+                //animator.SetTrigger("Invincible");
+                spriteRenderer.color = new Color32(192, 192, 192, 255); // gray color for broken shield
                 StartCoroutine(BeingInvincible());
             }
         }
@@ -92,7 +82,8 @@ public class Fly : MonoBehaviour
         if (shieldCoroutine != null)
             StopCoroutine(shieldCoroutine);
 
-        animator.SetBool("Shield", true);
+        //animator.SetBool("Shield", true);
+        spriteRenderer.color = new Color32(255, 215, 0, 255); // golden color for shield
         shieldCoroutine = StartCoroutine(ShieldRoutine());
     }
 
@@ -118,7 +109,7 @@ public class Fly : MonoBehaviour
             yield return null;
         }
 
-        animator.SetBool("Shield", false);
+        //animator.SetBool("Shield", false);
         invincible = false;
         shieldActive = false;
         shieldCoroutine = null;
@@ -128,13 +119,8 @@ public class Fly : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         Debug.Log("Invincibility ended!");
-        animator.SetBool("Shield", false);
+        //animator.SetBool("Shield", false);
+        spriteRenderer.color = Color.white; // reset color to white
         invincible = false;
-    }
-
-    private IEnumerator BackToNormal()
-    {
-        yield return new WaitForSeconds(5f);
-        Time.timeScale = 1f;
     }
 }

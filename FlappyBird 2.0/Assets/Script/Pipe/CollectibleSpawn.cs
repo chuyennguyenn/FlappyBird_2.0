@@ -8,7 +8,7 @@ public class CollectibleSpawn : MonoBehaviour
     private void Start()
     {
         //Debug.Log("CollectibleSpawn started");
-        int randomSpawn = Random.Range(0, 6);
+        int randomSpawn = Random.Range(0, 1);
 
         if (randomSpawn == 0)
         {
