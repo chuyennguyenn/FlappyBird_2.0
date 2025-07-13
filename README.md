@@ -30,9 +30,15 @@ A replication of one of the most well-known hyper-casual games: Flappy Bird.
 
    Download the zip file, extract to desired folder and run the .exe file
 
+   # Credits
+
+   [Asset](https://www.spriters-resource.com/mobile/flappybird/sheet/59894/)
+   
+   [Front](https://www.dafont.com/04b-19.font)
+
    # Todo
 
    - ~~Add collectible (shield - give immunity, star - give extra point...)~~
-   - Add ability(really???) to the bird + more playable character
+   - ~~Add ability(really???) to the bird + more playable character~~
 
    
