@@ -8,6 +8,11 @@ public class Tutorial : MonoBehaviour
 
     public int timerMax = 3;
 
+    private void OnDisable()
+    {
+        
+    }
+
     private void Update()
     {
         int timer = timerMax - (int)Time.timeSinceLevelLoad;

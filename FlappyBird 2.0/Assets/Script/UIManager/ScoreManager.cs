@@ -13,7 +13,7 @@ public class ScoreManager : MonoBehaviour
     private void Start()
     {
         highScore = PlayerPrefs.GetInt("HighScore", 0); // load high score from PlayerPrefs
-        highScoreText.text = highScore.ToString(); 
+        highScoreText.text = highScore.ToString();
     }
 
     private void Update()
