@@ -30,6 +30,14 @@ A replication of one of the most well-known hyper-casual games: Flappy Bird.
 
    Download the zip file, extract to desired folder and run the .exe file
 
+   # Control
+
+   Left-click to fly
+
+   E to activate ability (5-second cooldown)
+
+   Esc to pause/un-pause
+
    # Credits
 
    [Asset](https://www.spriters-resource.com/mobile/flappybird/sheet/59894/)
