@@ -26,27 +26,27 @@ A replication of one of the most well-known hyper-casual games: Flappy Bird.
 
    Both Fly Height (how high the bird jumps on tap) and gravity (how fast the bird falls) increase over time, reaching their maximum values after 2 minutes.
 
-   # How to run
+# How to run
 
-   Download the zip file, extract to desired folder and run the .exe file
+Download the zip file, extract to desired folder and run the .exe file
 
-   # Control
+ # Control
 
-   Left-click to fly
+ Left-click to fly
 
-   E to activate ability (5-second cooldown)
+ E to activate ability (5-second cooldown)
 
-   Esc to pause/un-pause
+ Esc to pause/un-pause
 
-   # Credits
+ # Credits
 
-   [Asset](https://www.spriters-resource.com/mobile/flappybird/sheet/59894/)
-   
-   [Front](https://www.dafont.com/04b-19.font)
+ [Asset](https://www.spriters-resource.com/mobile/flappybird/sheet/59894/)
+ 
+ [Front](https://www.dafont.com/04b-19.font)
 
-   # Todo
+ # Todo
 
-   - ~~Add collectible (shield - give immunity, star - give extra point...)~~
-   - ~~Add ability(really???) to the bird + more playable character~~
+ - ~~Add collectible (shield - give immunity, star - give extra point...)~~
+ - ~~Add ability(really???) to the bird + more playable character~~
 
    
